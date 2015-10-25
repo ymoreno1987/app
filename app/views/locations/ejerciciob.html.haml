@@ -1,0 +1,25 @@
+%h1.title Ejercicio B Parte 1 Calculo del casco convexo
+
+%h2=@mensaje
+
+%h2 Lista de POIs:
+%table#table
+  %thead
+    %tr
+      %th Name
+      %th Latitude
+      %th Longitude
+      %th Description
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.name
+        %td= location.latitude
+        %td= location.longitude
+        %td= location.description
+
+%h2=@peri
+
+%h2=@lejano
+
+= link_to 'Back to location list', locations_path

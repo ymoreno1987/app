@@ -1,0 +1,36 @@
+%h1.title Ejercicio A Parte 1 Buscar puntos de interes
+
+= form_tag(:action => 'ejercicioa') do
+
+  %p
+  Latitud:
+  = text_field "", :Lat
+  %p
+  Longitud:
+  = text_field "", :Lon
+  %p
+  Radio:
+  = text_field "", :Rad
+  %p
+  = submit_tag 'Buscar POIs'
+
+%h2=@mensaje
+
+%h2 Los puntos de interes cercanos son:
+%table#table
+  %thead
+    %tr
+      %th Name
+      %th Latitude
+      %th Longitude
+      %th Description
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.name
+        %td= location.latitude
+        %td= location.longitude
+        %td= location.description
+
+%p
+= link_to 'Back to location list', locations_path

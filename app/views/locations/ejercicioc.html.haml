@@ -1,0 +1,30 @@
+%h1.title Ejercicio C Parte 1 Buscar POI's visitados en una ruta
+
+= form_tag :action => 'ejercicioc'
+
+Ruta:
+%p
+= text_area "", :rutas
+%p
+= submit_tag 'Buscar POIs visitados'
+
+%h2=@mensaje
+
+%h2 Los POIs visitados fueron:
+%table#table
+  %thead
+    %tr
+      %th Name
+      %th Latitude
+      %th Longitude
+      %th Description
+  %tbody
+    - @visitados.each do |visitado|
+      %tr
+        %td= visitado.name
+        %td= visitado.latitude
+        %td= visitado.longitude
+        %td= visitado.description
+
+%p
+= link_to 'Back to location list', locations_path

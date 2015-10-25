@@ -1,0 +1,15 @@
+%h1.title Crear usuario con su ruta
+
+= form_tag gpsejemplos_path, :method => :post do
+
+  = label :"", :nombre, 'Nombre'
+  = text_field :usuario, :nombre
+  %p
+  = label :"", :"", 'Ruta'
+  = text_area "", :ruta
+
+  %p
+  = submit_tag 'Save Changes'
+
+%p
+= link_to 'Lista de Usuarios', gpsejemplos_path

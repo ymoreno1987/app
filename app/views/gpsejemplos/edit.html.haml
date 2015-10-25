@@ -1,0 +1,30 @@
+%h1.title Visualizar ruta de usuario:
+%h1= @nombre
+
+.map
+  %div#map
+
+%input#locations{:type => "hidden", :value => @gpsejemplo_json}
+
+%table#table
+  %thead
+    %tr
+      %th Latitude
+      %th Longitude
+      %th Timestamp
+  %tbody
+    - @gpsejemplo.each do |ubicacion|
+      %tr
+        %td= ubicacion.latitude
+        %td= ubicacion.longitude
+        %td= ubicacion.timestamp
+
+%p
+= link_to 'Back to user list', gpsejemplos_path
+
+
+= javascript_include_tag '/assets/maps/OpenLayers'
+= javascript_include_tag '/assets/maps/locations'
+
+:javascript
+  initMap($("#locations").val());
